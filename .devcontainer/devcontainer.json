@@ -1,0 +1,40 @@
+{
+  "name": "Ubuntu",
+  "image": "mcr.microsoft.com/devcontainers/base:jammy",
+  "features": {
+    // some nice utilities like zsh and oh-my-zsh
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshAsDefaultShell": true,
+      "installOhMyZsh": true,
+      "upgradePackages": true
+    },
+    // some oh-my-zsh plugins
+    "ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {
+      "plugins": "direnv aliases fd ripgrep zsh-autosuggestions zsh-interactive-cd zsh-syntax-highlighting",
+      "omzPlugins": "https://github.com/zsh-users/zsh-autosuggestions https://github.com/zsh-users/zsh-syntax-highlighting"
+    },
+    // shell history
+    "ghcr.io/stuartleeks/dev-container-features/shell-history:0": {},
+    // fzf utility (https://github.com/junegunn/fzf - fuzzy finder)
+    "ghcr.io/devcontainers-contrib/features/fzf:1": {},
+    // direnv utility (https://direnv.net/)
+    "ghcr.io/devcontainers-contrib/features/direnv:1": {},
+    // a minimal desktop environment for GUI applications, including VNC and noVNC support
+    "ghcr.io/devcontainers/features/desktop-lite:1": {
+      "password": "secret"
+    }
+  },
+  "forwardPorts": [
+    5901,
+    6080
+  ],
+  "portsAttributes": {
+    "5901": {
+      "label": "VNC access (via VNC protocol) provided by desktop-lite feature"
+    },
+    "6080": {
+      "label": "VNC access (via noVNC in the browser) provided by desktop-lite feature"
+    }
+  }
+}
